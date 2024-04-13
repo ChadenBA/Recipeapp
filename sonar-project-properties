@@ -1,0 +1,3 @@
+sonar.projectKey=Recipeapp
+sonar.projectName=Recipeapp
+sonar.java.binaries=.
