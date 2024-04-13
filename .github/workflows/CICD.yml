@@ -35,7 +35,7 @@ jobs:
           name: RecipeApp
           path: target/*.jar
     - name: Add trivy to PATH
-      run: export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/bin/trivy
+      run: export PATH="/usr/bin/trivy:$PATH"
     - name: Debug Script
       run: |
        set -x
