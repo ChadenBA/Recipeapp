@@ -53,12 +53,28 @@ jobs:
         trivy --version
         trivy fs --format table -o trivy-fs-report.html .
 
-    - name: Build and Run SonarQube
+   # Download and install SonarQube
+    - name: Download and install SonarQube
       run: |
-        docker run -d --name sonarqube -p 9000:9000 sonarqube:latest
-        docker ps
-        docker inspect -f '{{ .NetworkSettings.IPAddress }}' sonarqube
+          wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.2.1.43589.zip
+          unzip sonarqube-9.2.1.43589.zip
+          mv sonarqube-9.2.1.43589 /opt/sonarqube
 
+      # Start SonarQube
+    - name: Start SonarQube
+      run: /opt/sonarqube/bin/linux-x86-64/sonar.sh start
+
+      # Wait for SonarQube to start (optional)
+      # Add a wait command here if needed
+
+      # Run SonarQube analysis
+    - name: Run SonarQube analysis
+      run: |
+          /opt/sonar-scanner/bin/sonar-scanner \
+            -Dsonar.projectKey=my_project_key \
+            -Dsonar.sources=src \
+            -Dsonar.host.url=http://localhost:9000 \
+            -Dsonar.login=my_auth_token
     # Execute SonarQube scan using the official action
     - name: Official SonarQube Scan
       uses: SonarSource/sonarqube-scan-action@v2.0.2
