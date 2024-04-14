@@ -38,12 +38,14 @@ jobs:
           path: target/*.jar
     - name: Print Environment Variables
       run: env
+    - name: Add /usr/local/bin to PATH
+      run: export PATH=$PATH:/usr/local/bin
 
     - name: Trivy FS Scan
       run: |
         ls /usr/bin/trivy
         /usr/bin/trivy --version
-      # /usr/bin/trivy fs --format table -o trivy-fs-report.html .
+        /usr/local/bin/trivy fs --format table -o trivy-fs-report.html .
     - name: SonarQube Scan
       uses: sonarsource/sonarqube-scan-action@master
       env:
