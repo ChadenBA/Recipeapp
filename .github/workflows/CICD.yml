@@ -37,8 +37,8 @@ jobs:
    
     - name: Trivy FS Scan
       run: |
-           echo "Running Trivy FS Scan"
-           trivy fs --format table -o trivy-fs-report.html .
+               export PATH="/usr/bin:$PATH"
+               trivy fs --format table -o trivy-fs-report.html .
     - name: SonarQube Scan
       uses: sonarsource/sonarqube-scan-action@master
       env:
