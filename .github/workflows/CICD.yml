@@ -41,7 +41,9 @@ jobs:
 
     - name: Trivy FS Scan
       run: |
-               /usr/bin/trivy fs --format table -o trivy-fs-report.html .
+        ls /usr/bin/trivy
+        /usr/bin/trivy --version
+      # /usr/bin/trivy fs --format table -o trivy-fs-report.html .
     - name: SonarQube Scan
       uses: sonarsource/sonarqube-scan-action@master
       env:
