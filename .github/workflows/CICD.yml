@@ -43,7 +43,8 @@ jobs:
 
     - name: Run Trivy scan
       run: |
-        docker run --rm -v $(pwd):/workspace aquasec/trivy trivy image --timeout 5m --format table -o /workspace/trivy-report.txt chaden/recipeapp:latesttimeout 5m --format table -o /workspace/trivy-report.txt chaden/recipeapp:latest 
+        docker run --rm -v $(pwd):/workspace aquasec/trivy   trivy image --format table -o trivy-image-report.html chaden/recipeapp:latest
+
     - name: Trivy FS Scan
       run: |
         ls /usr/bin/trivy
