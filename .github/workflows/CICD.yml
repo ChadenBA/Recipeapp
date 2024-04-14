@@ -57,12 +57,14 @@ jobs:
       run: |
         docker run -d --name sonarqube -p 9000:9000 sonarqube:latest
         docker ps
+        docker inspect -f '{{ .NetworkSettings.IPAddress }}' 12ac355698e3
+
     # Execute SonarQube scan using the official action
     - name: Official SonarQube Scan
       uses: SonarSource/sonarqube-scan-action@v2.0.2
       env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: http://localhost:9000
+          SONAR_HOST_URL: http://172.17.0.2:9000
              
     - name: SonarQube Scan
       uses: sonarsource/sonarqube-scan-action@master
