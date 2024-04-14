@@ -54,11 +54,19 @@ jobs:
         trivy fs --format table -o trivy-fs-report.html .
 
    # Download and install SonarQube
-    - name: Download and install SonarQube
+    - name: Download SonarQube
       run: |
-          wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.2.1.43589.zip
-          unzip sonarqube-9.2.1.43589.zip
-          mv sonarqube-9.2.1.43589 /opt/sonarqube
+        wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.4.2.47136.zip
+        unzip sonarqube-9.4.2.47136.zip -d /opt
+        mv /opt/sonarqube-9.4.2.47136 /opt/sonarqube
+
+    - name: Set up Java
+      uses: actions/setup-java@v2
+      with:
+        java-version: '17'
+
+    - name: Verify Java version
+      run: java -version
 
       # Start SonarQube
     - name: Start SonarQube
