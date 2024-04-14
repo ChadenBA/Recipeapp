@@ -56,7 +56,7 @@ jobs:
       uses: sonarsource/sonarqube-scan-action@master
       env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: http://197.238.92.171:9000
+          SONAR_HOST_URL: http://103.224.182.246:9000
           
     - name: Install jq
       run: sudo apt-get update && sudo apt-get install -y jq
