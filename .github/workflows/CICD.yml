@@ -38,10 +38,20 @@ jobs:
           path: target/*.jar
     - name: Print Environment Variables
       run: env
-   
-    - name: Trivy FS Scan
+    - name: Install Trivy
       run: |
-          trivy fs --format table -o trivy-fs-report.html .
+        sudo apt-get update
+        sudo apt-get install -y wget apt-transport-https gnupg lsb-release
+        sudo wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+        echo "deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main" | sudo tee -a /etc/apt/sources.list.d/trivy.list
+        sudo apt-get update
+        sudo apt-get install -y trivy
+
+    # Run Trivy scan
+    - name: Run Trivy scan
+      run: |
+        trivy --version
+        trivy fs --format table -o trivy-fs-report.html .
     - name: SonarQube Scan
       uses: sonarsource/sonarqube-scan-action@master
       env:
