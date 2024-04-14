@@ -57,7 +57,7 @@ jobs:
       run: |
         docker run -d --name sonarqube -p 9000:9000 sonarqube:latest
         docker ps
-        docker inspect -f '{{ .NetworkSettings.IPAddress }}' sonarqube:latest 
+        docker inspect -f '{{ .NetworkSettings.IPAddress }}' sonarqube
 
     # Execute SonarQube scan using the official action
     - name: Official SonarQube Scan
