@@ -56,15 +56,7 @@ jobs:
     - name: Build and Run SonarQube
       run: |
         docker run -d --name sonarqube -p 9000:9000 sonarqube:latest
-
-    # Wait for SonarQube to start
-    - name: Wait for SonarQube to Start
-      run: |
-        until $(curl --output /dev/null --silent --head --fail http://localhost:9000); do
-          echo "Waiting for SonarQube to start..."
-          sleep 10
-        done
-
+        docker ps
     # Execute SonarQube scan using the official action
     - name: Official SonarQube Scan
       uses: SonarSource/sonarqube-scan-action@v2.0.2
