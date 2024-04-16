@@ -55,7 +55,8 @@ jobs:
         sudo chown sonar:sonar /opt/sonarqube -R
 
     - name: Start SonarQube
-      run: /opt/sonarqube/bin/linux-x86-64/sonar.sh start
+      run: sudo /opt/sonarqube/bin/linux-x86-64/sonar.sh start
+
 
     - name: Run SonarQube analysis
       run: echo "Running SonarQube analysis..."
