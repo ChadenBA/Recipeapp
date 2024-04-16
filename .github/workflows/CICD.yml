@@ -59,13 +59,11 @@ jobs:
     
 
 
-    - name: Run SonarQube analysis
-    - uses: SonarSource/sonarqube-scan-action@v2.0.2
-    - run: sudo /opt/sonarqube/bin/linux-x86-64/sonar.sh start
-
+    - name: Official SonarQube Scan
+      uses: SonarSource/sonarqube-scan-action@v2.0.2
       env:
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: http://localhost:9000
 
     - name: Install jq
       run: sudo apt-get update && sudo apt-get install -y jq
