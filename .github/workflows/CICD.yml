@@ -60,9 +60,9 @@ jobs:
 
 
     - name: Run SonarQube analysis
-      run: echo "Running SonarQube analysis..."
+    - uses: SonarSource/sonarqube-scan-action@v2.0.2
       env:
-        SONAR_HOST_URL: http://localhost:9000
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
     - name: Install jq
