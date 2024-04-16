@@ -67,24 +67,13 @@ jobs:
       # Start SonarQube
     - name: Start SonarQube
       run: /opt/sonarqube/bin/linux-x86-64/sonar.sh start
-
-      # Wait for SonarQube to start (optional)
-      # Add a wait command here if needed
-
-      # Run SonarQube analysis
-    - name: Run SonarQube analysis
-      run: |
-        
-            -Dsonar.projectKey=my_project_key \
-            -Dsonar.sources=src \
-            -Dsonar.host.url=http://localhost:9000 \
-            -Dsonar.login=my_auth_token
+   
     # Execute SonarQube scan using the official action
     - name: Official SonarQube Scan
       uses: SonarSource/sonarqube-scan-action@v2.0.2
       env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: http:/127.0.0.1:9000
+          SONAR_HOST_URL: http://localhost:9000
              
     - name: SonarQube Scan
       uses: sonarsource/sonarqube-scan-action@master
