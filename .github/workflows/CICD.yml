@@ -64,14 +64,6 @@ jobs:
        sudo useradd -c "user to run SonarQube" -d /opt/sonarqube -g sonar sonar
        sudo chown sonar:sonar /opt/sonarqube -R
 
-    - name: Set up Java
-      uses: actions/setup-java@v2
-      with:
-        java-version: '17'
-
-    - name: Verify Java version
-      run: java -version
-
       # Start SonarQube
     - name: Start SonarQube
       run: /opt/sonarqube/bin/linux-x86-64/sonar.sh start
