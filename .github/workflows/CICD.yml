@@ -69,8 +69,7 @@ jobs:
       run: /opt/sonarqube/bin/linux-x86-64/sonar.sh start
     - name: Run SonarQube analysis
       run: |
-        
-            -Dsonar.projectKey=my_project_key \
+      
             -Dsonar.sources=src \
             -Dsonar.host.url=http://localhost:9000 \
             -Dsonar.login=squ_fb9478b67688f5ba467f963ccd765674bc581052
