@@ -74,7 +74,7 @@ jobs:
       # Run SonarQube analysis
     - name: Run SonarQube analysis
       run: |
-          /opt/sonar-scanner/bin/sonar-scanner \
+        
             -Dsonar.projectKey=my_project_key \
             -Dsonar.sources=src \
             -Dsonar.host.url=http://localhost:9000 \
