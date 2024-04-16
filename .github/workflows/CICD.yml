@@ -62,6 +62,7 @@ jobs:
     - name: Start SonarQube
       run: /opt/sonarqube/bin/linux-x86-64/sonar.sh start
     - name: Run SonarQube analysis
+    - uses: SonarSource/sonarqube-scan-action@v2.0.2
     - env :
             SONAR_HOST_URL: http://localhost:9000 \
             SONAR_TOKEN: squ_fb9478b67688f5ba467f963ccd765674bc581052
