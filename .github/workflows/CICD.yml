@@ -61,6 +61,8 @@ jobs:
 
     - name: Run SonarQube analysis
     - uses: SonarSource/sonarqube-scan-action@v2.0.2
+    - run: sudo /opt/sonarqube/bin/linux-x86-64/sonar.sh start
+
       env:
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
