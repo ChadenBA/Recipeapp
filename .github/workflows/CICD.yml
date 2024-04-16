@@ -65,12 +65,6 @@ jobs:
         SONAR_HOST_URL: http://localhost:9000
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-    - name: Official SonarQube Scan
-      uses: SonarSource/sonarqube-scan-action@v2.0.2
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: http://localhost:9000
-
     - name: Install jq
       run: sudo apt-get update && sudo apt-get install -y jq
 
