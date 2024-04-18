@@ -60,7 +60,9 @@ jobs:
 
 
     - name: Official SonarQube Scan
-      run: docker run --rm -e SONAR_TOKEN=${{ secrets.SONAR_TOKEN }} -e SONAR_HOST_URL=http://localhost:9000 sonarqube:lts-community
+      run: |
+       docker run SONAR_TOKEN=${{ secrets.SONAR_TOKEN }} -e SONAR_HOST_URL=http://localhost:9000 sonarqube:lts-community
+       docker ps 
 
     - name: Install jq
       run: sudo apt-get update && sudo apt-get install -y jq
