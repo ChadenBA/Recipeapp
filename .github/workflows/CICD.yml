@@ -56,11 +56,16 @@ jobs:
 
     - name: Start SonarQube
       run: sudo /opt/sonarqube/bin/linux-x86-64/sonar.sh start
-    
+    - name: SonarQube Scan
+      run: |
+          /opt/sonar-scanner/bin/sonar-scanner \
+            -Dsonar.host.url=http://localhost:9000 \
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+             working-directory: ${{ github.workspace }}
 
 
     - name: Official SonarQube Scan
-      run: docker run SONAR_TOKEN=${{ secrets.SONAR_TOKEN }} -e SONAR_HOST_URL=http://localhost:9000 sonarqube:lts-community
+      run: docker run -e SONAR_TOKEN=${{ secrets.SONAR_TOKEN }} -e SONAR_HOST_URL=http://localhost:9000 sonarqube:lts-community
 
 
     - name: Install jq
