@@ -83,6 +83,7 @@ jobs:
 
     - name: Push Docker Image
       run: |
+        docker tag recipeapp chaden/recipeapp:latest
         docker push chaden/recipeapp:latest
 
     - name: Kubectl Action
