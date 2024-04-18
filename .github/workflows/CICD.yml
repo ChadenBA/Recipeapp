@@ -58,7 +58,6 @@ jobs:
       run: sudo /opt/sonarqube/bin/linux-x86-64/sonar.sh start
    
 
-
     - name: Official SonarQube Scan
       run: docker run -e SONAR_TOKEN=${{ secrets.SONAR_TOKEN }} -e SONAR_HOST_URL=http://localhost:9000 sonarqube:lts-community
 
