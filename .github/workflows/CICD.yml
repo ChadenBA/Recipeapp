@@ -85,11 +85,10 @@ jobs:
       run: |
         docker push chaden13/recipeapp:latest
 
-    - name: kubeconfig 
-      run: |
-        mkdir ${HOME}/.kube
-        echo ${{ secrets.KUBE_CONFIG }} | base64 --decode > ${HOME}/.kube/config
-        cat ${HOME}/.kube/config
+    - name: Kubectl Action
+      uses: tale/kubectl-action@v1
+      with:
+        base64-kube-config: ${{ secrets.KUBE_CONFIG }}
 
     - name: deploy to Kubernetes   
       run: |
