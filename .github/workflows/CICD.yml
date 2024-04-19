@@ -85,17 +85,14 @@ jobs:
       run: |
         docker push chaden13/recipeapp:latest
 
-    - name: Kubectl Action
-      uses: tale/kubectl-action@v1
-      with:
-        base64-kube-config: ${{ secrets.KUBE_CONFIG }}
     - name: kubeconfig 
-      run : |
-       mkdir ${Home}/.kube
-       echo  ${{ secrets.KUBE_CONFIG }} | base64 --decode >  ${Home}/.kube/config
-       cat  ${Home}/.kube/config
-    - name: deploy to kubrete   
-    - run: |
+      run: |
+        mkdir ${HOME}/.kube
+        echo ${{ secrets.KUBE_CONFIG }} | base64 --decode > ${HOME}/.kube/config
+        cat ${HOME}/.kube/config
+
+    - name: deploy to Kubernetes   
+      run: |
         kubectl apply -f deployment-service.yml -n webapps --validate=false
         kubectl get svc -n webapps
 
