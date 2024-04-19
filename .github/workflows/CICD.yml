@@ -101,7 +101,7 @@ jobs:
 
     - name: Debug Kubernetes Cluster
       run: |
-        kubectl cluster-info
+        kubectl cluster-info dump
         kubectl get pods --all-namespaces
 
     - name: Update dependency graph
