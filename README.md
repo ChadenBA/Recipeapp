@@ -166,8 +166,7 @@ The deployment of the Router Management Application is facilitated through a Jen
 
 ## Screenshots
 
-![App Screenshot](https://res.cloudinary.com/drgzrvosx/image/upload/v1714170171/Screenshot_from_2024-04-26_23-22-08_p8rhpe.png)
-
+![App Screenshot](https://res.cloudinary.com/drgzrvosx/image/upload/v1714170789/Screenshot_from_2024-04-26_23-32-44_yxdsnn.png)
 
 ![App Screenshot](https://res.cloudinary.com/drgzrvosx/image/upload/v1714170236/Screenshot_from_2024-04-26_23-23-45_rpedb5.png)
 
