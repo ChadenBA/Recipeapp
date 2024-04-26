@@ -12,7 +12,7 @@ Install my-project with npm
 
 ```bash
   git clone https://github.com/ChadenBA/Recipeapp.git
-  cd RouterManagementApp
+  cd Recipeapp
   mvn compile
 ```
     
