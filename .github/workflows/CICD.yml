@@ -26,7 +26,10 @@ jobs:
       with:
         name: RecipeApp
         path: target/*.jar
-
+        
+    - name: Java CI with Maven (Run Test)
+      run: mvn test
+      
     - name: Print Environment Variables
       run: env
 
